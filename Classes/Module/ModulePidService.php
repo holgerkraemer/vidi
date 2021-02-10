@@ -12,7 +12,7 @@ use Fab\Vidi\Tca\Tca;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Frontend\Page\PageRepository;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 
 /**
  * Class ModulePidService
@@ -84,11 +84,9 @@ class ModulePidService
         } else {
 
             // Get pid from User TSConfig if any.
-            $tsConfigPath = sprintf('tx_vidi.dataType.%s.storagePid', $this->dataType);
-            $result = $this->getBackendUser()->getTSConfig($tsConfigPath);
-            $configuredPid = isset($result['value'])
-                ? $configuredPid = (int)$result['value']
-                : $this->getModuleLoader()->getDefaultPid();
+            $userTsConfig = $this->getBackendUser()->getTSConfig();
+            $result = $userTsConfig['tx_vidi.']['dataType.'][$this->dataType]['storagePid'];
+            $configuredPid = $result['value'] ?? $this->getModuleLoader()->getDefaultPid();
         }
 
         return $configuredPid;

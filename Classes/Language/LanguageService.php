@@ -132,7 +132,7 @@ class LanguageService implements SingletonInterface
 
             $defaultFlag = ''; // default value
 
-            $tsConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig(0, 'mod.SHARED');
+            $tsConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig(0);
 
             // Fallback non sprite-configuration
             if (($pos = strrpos($tsConfig['properties']['defaultLanguageFlag'], '.')) !== false) {

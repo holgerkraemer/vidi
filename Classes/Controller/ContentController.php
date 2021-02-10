@@ -37,6 +37,7 @@ use Fab\Vidi\Persistence\PagerObjectFactory;
 use Fab\Vidi\Signal\ProcessContentDataSignalArguments;
 use Fab\Vidi\Tca\Tca;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
+use Fab\Vidi\Domain\Repository\SelectionRepository;
 
 /**
  * Controller which handles actions related to Vidi in the Backend.

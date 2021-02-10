@@ -91,8 +91,9 @@ class MatcherObjectFactory implements SingletonInterface
     protected function applyCriteriaFromTSConfig(Matcher $matcher): Matcher
     {
         $dataType = $matcher->getDataType();
-        $tsConfigPath = sprintf('tx_vidi.dataType.%s.constraints', $dataType);
-        $tsConfig = $this->getBackendUser()->getTSConfig($tsConfigPath);
+
+        $userTsConfig = $this->getBackendUser()->getTSConfig();
+        $tsConfig = $userTsConfig['tx_vidi.']['dataType.'][$dataType]['constraints'];
 
         if (is_array($tsConfig['properties']) && !empty($tsConfig['properties'])) {
 

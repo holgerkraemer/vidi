@@ -31,7 +31,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\Qom\SourceInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\UpperCaseInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Frontend\Page\PageRepository;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
 use Fab\Vidi\Tca\Tca;
 
 /**
@@ -912,16 +912,16 @@ class VidiDbBackend
         $pageRepository = $this->getPageRepository();
         if (is_object($GLOBALS['TSFE'])) {
             $languageMode = $GLOBALS['TSFE']->sys_language_mode;
-            if ($this->isBackendUserLogged() && $this->getBackendUser()->workspace !== 0) {
-                $pageRepository->versioningWorkspaceId = $this->getBackendUser()->workspace;
-            }
+            #if ($this->isBackendUserLogged() && $this->getBackendUser()->workspace !== 0) {
+            #    $pageRepository->versioningWorkspaceId = $this->getBackendUser()->workspace;
+            #}
         } else {
             $languageMode = '';
             $workspaceUid = $this->getBackendUser()->workspace;
-            $pageRepository->versioningWorkspaceId = $workspaceUid;
-            if ($this->getBackendUser()->workspace !== 0) {
-                $pageRepository->versioningPreview = 1;
-            }
+            #$pageRepository->versioningWorkspaceId = $workspaceUid;
+            #if ($this->getBackendUser()->workspace !== 0) {
+            #    $pageRepository->versioningPreview = 1;
+            #}
         }
 
         // If current row is a translation select its parent
