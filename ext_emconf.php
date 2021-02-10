@@ -8,7 +8,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'fabien@ecodev.ch',
     'module' => '',
     'state' => 'stable',
-    'version' => '4.1.0-dev',
+    'version' => 'cms10-dev',
     'autoload' => [
         'psr-4' => ['Fab\\Vidi\\' => 'Classes']
     ],
@@ -16,7 +16,7 @@ $EM_CONF[$_EXTKEY] = [
         [
             'depends' =>
                 [
-                    'typo3' => '9.5.0-9.5.99',
+                    'typo3' => '9.5.0-10.4.99',
                 ],
             'conflicts' =>
                 [
